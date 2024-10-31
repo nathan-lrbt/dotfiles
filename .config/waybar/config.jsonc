@@ -2,7 +2,7 @@
   "position": "top",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["network", "pulseaudio", "battery", "clock"],
+  "modules-right": ["network", "pulseaudio", "battery", "clock", "power-profiles-daemon", "custom/power"],
   "clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
@@ -36,5 +36,28 @@
           "default": ["", "", " "]
       },
       "on-click": "pavucontrol"
+  },
+  "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "<span size='13000'> </span>",
+        "performance": "<span size='13000'> </span>",
+        "balanced": "<span size='13000'> </span>",
+        "power-saver": "<span size='13000'> </span>"
+      }
+  },
+  "custom/power": {
+        "format" : "⏻ ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
   }
 }
