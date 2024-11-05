@@ -49,3 +49,5 @@ alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time
 
 
 thefuck --alias | source
+
+set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
