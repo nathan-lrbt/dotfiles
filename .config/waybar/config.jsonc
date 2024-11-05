@@ -42,10 +42,10 @@
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
       "tooltip": true,
       "format-icons": {
-        "default": "<span size='13000'> </span>",
-        "performance": "<span size='13000'> </span>",
-        "balanced": "<span size='13000'> </span>",
-        "power-saver": "<span size='13000'> </span>"
+        "default": "<span size='13000' foreground='#f38ba8'> </span>",
+        "performance": "<span size='13000' foreground='#f38ba8'> </span>",
+        "balanced": "<span size='13000' foreground='#89b4fa'>  </span>",
+        "power-saver": "<span size='13000' foreground='#B1E3AD'>  </span>"
       }
   },
   "custom/power": {

@@ -64,9 +64,12 @@ alias vim='nvim'
 alias c='clear'
 alias la='ls -a'
 alias vpn='sudo openfortivpn remote.unige.ch -u lherbet1'
+alias lr="ls -R"
 alias f='fuck'
 alias update="yay -Syu && yay -Scc"
 alias gh="exec ssh-agent zsh && ssh-add -k ~/.shh/github"
+alias ll="eza -lh"
+alias cat="bat"
 
 # Shell integrations
 eval "$(fzf --zsh)"
