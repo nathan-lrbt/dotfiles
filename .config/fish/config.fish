@@ -25,6 +25,7 @@ alias f='fuck'
 alias update="yay -Syu && yay -Scc"
 alias gh="exec ssh-agent zsh && ssh-add -k ~/.shh/github"
 alias cat="bat"
+alias tree="eza --tree"
 
 eval "$(fzf --fish)"
 eval "$(zoxide init --cmd cd fish)"
@@ -33,6 +34,13 @@ eval "$(zoxide init fish)"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+ # Golang environment variables
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+
+# Update PATH to include GOPATH and GOROOT binaries
+export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
 
 set fg "#CBE0F0"
 set bg "#011628"
