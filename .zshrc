@@ -69,7 +69,7 @@ alias f='fuck'
 alias update="yay -Syu && yay -Scc"
 alias gh="exec ssh-agent zsh && ssh-add -k ~/.shh/github"
 alias ll="eza -lh"
-alias cat="bat"
+# alias cat="bat"
 
 # Shell integrations
 eval "$(fzf --zsh)"
