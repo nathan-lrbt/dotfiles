@@ -3,17 +3,12 @@
  eval /home/nathan/miniconda3//bin/conda "shell.fish" "hook" $argv | source
  # <<< conda initialize <<<
 
- if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
 function starship_transient_prompt_func
   starship module character
 end
 starship init fish | source
 enable_transience
 
-starship init fish | source
 
 alias ls='ls --color'
 alias vim='nvim'
@@ -31,9 +26,9 @@ eval "$(fzf --fish)"
 eval "$(zoxide init --cmd cd fish)"
 eval "$(zoxide init fish)"
 
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+# export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 #  # Golang environment variables
 # export GOROOT=/usr/local/go
@@ -42,14 +37,14 @@ export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git
 # Update PATH to include GOPATH and GOROOT binaries
 # export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
 
-set fg "#CBE0F0"
-set bg "#011628"
-set bg_highlight "#143652"
-set purple "#B388FF"
-set blue "#06BCE4"
-set cyan "#2CF9ED"
+# set fg "#CBE0F0"
+# set bg "#011628"
+# set bg_highlight "#143652"
+# set purple "#B388FF"
+# set blue "#06BCE4"
+# set cyan "#2CF9ED"
 
-export FZF_DEFAULT_OPTS="--color=fg:$fg,bg:$bg,hl:$purple,fg+:$fg,bg+:$bg_highlight,hl+:$purple,info:$blue,prompt:$cyan,pointer:$cyan,marker:$cyan,spinner:$cyan,header:$cyan"
+# export FZF_DEFAULT_OPTS="--color=fg:$fg,bg:$bg,hl:$purple,fg+:$fg,bg+:$bg_highlight,hl+:$purple,info:$blue,prompt:$cyan,pointer:$cyan,marker:$cyan,spinner:$cyan,header:$cyan"
 
 # ---- Eza (better ls) -----
 
@@ -58,4 +53,4 @@ alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time
 
 thefuck --alias | source
 
-set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
+# set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
