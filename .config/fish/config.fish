@@ -21,6 +21,7 @@ alias update="yay -Syu && yay -Scc"
 alias gh="exec ssh-agent zsh && ssh-add -k ~/.shh/github"
 alias cat="bat"
 alias tree="eza --tree"
+alias lazy="lazygit"
 
 eval "$(fzf --fish)"
 eval "$(zoxide init --cmd cd fish)"
