@@ -79,7 +79,7 @@ local plugins = {
     config = function(_, opts)
       local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
       require("dap-python").setup(path)
-      require("core.utils").load_mappings("dap-python")
+      -- require("core.utils").load_mappings("dap-python")
     end,
   },
   {
@@ -112,12 +112,17 @@ local plugins = {
         "mypy",
         "ruff",
         "black",
+        "clangd",
+        "clang-format",
+        "lua-language-server"
+
       },
     },
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = {"python"},
+    event = "VeryLazy",
+    -- ft = {"python"},
     opts = function()
       return require "custom.configs.null-ls"
     end,
