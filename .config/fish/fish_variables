@@ -1,5 +1,9 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export QT_AUTO_SCREEN_SCALE_FACTOR:1
+SETUVAR --export QT_ENABLE_HIGHDPI_SCALING:1
+SETUVAR --export QT_ENABLE_HIGH_DPI_SCALING:1
+SETUVAR --export QT_SCALE_FACTOR:2
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:brblack

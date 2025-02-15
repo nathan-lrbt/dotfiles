@@ -22,6 +22,7 @@ alias gh="exec ssh-agent zsh && ssh-add -k ~/.shh/github"
 alias cat="bat"
 alias tree="eza --tree"
 alias lazy="lazygit"
+alias jl="jupyter lab"
 
 eval "$(fzf --fish)"
 eval "$(zoxide init --cmd cd fish)"
@@ -55,3 +56,7 @@ alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time
 thefuck --alias | source
 
 # set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
