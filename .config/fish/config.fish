@@ -9,6 +9,11 @@ end
 starship init fish | source
 enable_transience
 
+function last_history_item
+    echo $history[1]
+end
+abbr -a !! --position anywhere --function last_history_item
+
 
 alias ls='ls --color'
 alias vim='nvim'
