@@ -28,6 +28,7 @@ alias cat="bat"
 alias tree="eza --tree"
 alias lazy="lazygit"
 alias jl="jupyter lab"
+alias kee="cat ~/KeePass/.config | wl-copy -n && sleep 5s && wl-copy -c"
 
 eval "$(fzf --fish)"
 eval "$(zoxide init --cmd cd fish)"
