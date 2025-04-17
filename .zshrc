@@ -1,3 +1,20 @@
+# Set the GPG_TTY to be the same as the TTY, either via the env var
+# or via the tty command.
+if [ -n "$TTY" ]; then
+  export GPG_TTY=$(tty)
+else
+  export GPG_TTY="$TTY"
+fi
+
+PATH="$HOME/.go/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
+
+export EDITOR=nvim
+
+# SSH_AUTH_SOCK set to GPG to enable using gpgagent as the ssh agent.
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -15,7 +32,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-plugins=(ssh-agent git)
+
 # Add in snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
@@ -30,19 +47,21 @@ autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
- 
+# Prompt
+eval "$(starship init zsh)"
+
 # Keybindings
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
 
+zle_highlight+=(paste:none)
+
 # History
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
-HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -63,74 +82,29 @@ alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
 alias la='ls -a'
+alias ll='eza -lh'
 alias vpn='sudo openfortivpn remote.unige.ch -u lherbet1'
-alias lr="ls -R"
 alias f='fuck'
 alias update="yay -Syu && yay -Scc"
 alias gh="exec ssh-agent zsh && ssh-add -k ~/.shh/github"
-alias ll="eza -lh"
-# alias cat="bat"
+alias cat="bat"
+alias tree="eza --tree"
+alias lazy="lazygit"
+alias jl="jupyter lab"
+alias kee="cat ~/KeePass/.config | wl-copy -n && sleep 5s && wl-copy -c && c"
+
 
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(zoxide init zsh)"
-
-# -- Use fd instead of fzf --
-
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-
-# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
-}
-
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
-}
-
-source ~/fzf-git.sh/fzf-git.sh
-
-# --- setup fzf theme ---
-fg="#CBE0F0"
-bg="#011628"
-bg_highlight="#143652"
-purple="#B388FF"
-blue="#06BCE4"
-cyan="#2CF9ED"
-
-export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
-
-# ---- Eza (better ls) -----
 
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 
 # thefuck alias
 eval $(thefuck --alias)
 
-# Created by `pipx` on 2024-07-08 10:21:18
-export PATH="$PATH:/home/nathan/.local/bin"
-
-# exec ssh-agent zsh
-# ssh-add -k ~/.ssh/github
 
 # >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/nathan/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/nathan/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/nathan/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/nathan/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+. "/home/nathan/miniconda3/etc/profile.d/conda.sh"
 # <<< conda initialize <<<
 
