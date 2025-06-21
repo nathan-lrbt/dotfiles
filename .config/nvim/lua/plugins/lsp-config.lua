@@ -10,7 +10,7 @@ return{
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = {"lua_ls", 'ts_ls', "pyright", "bashls", "sqlls", "rust_analyzer", "ltex", "htmx", "templ", "dockerls", "cssls", "clangd", "gopls"}
+        ensure_installed = {"lua_ls", 'ts_ls', "pyright", "bashls", "sqlls", "rust_analyzer", "ltex_ls", "htmx", "templ", "dockerls", "cssls", "clangd", "gopls"}
       })
     end
   },
@@ -27,7 +27,7 @@ return{
       lspconfig.bashls.setup({capabilities = capabilities})
       lspconfig.sqlls.setup({capabilities = capabilities})
       lspconfig.rust_analyzer.setup({capabilities = capabilities})
-      lspconfig.ltex.setup({capabilities = capabilities})
+      lspconfig.ltex_ls.setup({capabilities = capabilities})
       lspconfig.htmx.setup({capabilities = capabilities})
       lspconfig.templ.setup({capabilities = capabilities})
       lspconfig.dockerls.setup({capabilities = capabilities})
