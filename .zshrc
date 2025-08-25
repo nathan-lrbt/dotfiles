@@ -109,3 +109,11 @@ eval $(thefuck --alias)
 . "/home/nathan/miniconda3/etc/profile.d/conda.sh"
 # <<< conda initialize <<<
 
+
+# pnpm
+export PNPM_HOME="/home/nathan/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
