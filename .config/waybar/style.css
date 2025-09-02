@@ -18,7 +18,7 @@ window#waybar {
 
 #window {
     margin: 8px;
-    padding-left: 8;
+    padding-left: 8px;
     padding-right: 8;
 }
 
@@ -34,7 +34,11 @@ button:hover {
     border-top: 2px solid @mauve;
 }
 
+#workspaces{
+  padding-left: 10px;
+}
 #workspaces button {
+    color: @rosewater;
     padding: 0 4px;
 }
 
@@ -99,6 +103,7 @@ button:hover {
 #power_profiles-daemon {
     color: @green;
     border-bottom: 2px solid @green;
+  padding-right: 10px;
 }
 
 #network {
