@@ -91,7 +91,7 @@ alias cat="bat"
 alias tree="eza --tree"
 alias lazy="lazygit"
 alias jl="jupyter lab"
-alias kee="cat ~/KeePass/.config | wl-copy -n && sleep 5s && wl-copy -c && c"
+alias kee="cat ~/KeePassXC/.config | wl-copy -n && sleep 5s && wl-copy -c && c"
 alias z="zathura"
 
 
