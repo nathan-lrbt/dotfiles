@@ -1,143 +1,163 @@
-@import "mocha.css"; 
+@import "mocha.css";
 
 * {
-    font-family: "MesloLGS Nerd Font Mono Bold";
-    font-size: 16px;
-    min-height: 0;
-    font-weight: bold;
+  /* font-family: FantasqueSansMono Nerd Font; */
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 17px;
+  min-height: 0;
+  border-radius: 14px;
+  /* background-color: @surface1; */
 }
 
-window#waybar {
-    background: transparent;
-    background-color: rgba(17, 17, 27, 0.8);
-    color: @overlay0;
-    transition-property: background-color;
-    transition-duration: 0.1s;
-    border-bottom: 1px solid @overlay1;
+#waybar {
+  background: @surface1;
+  color: @text;
+  margin: 5px 5px;
 }
 
-#window {
-    margin: 8px;
-    padding-left: 8px;
-    padding-right: 8;
+#workspaces {
+  border-radius: 1rem;
+  margin: 5px;
+  background-color: @surface0;
+  margin: 0.5rem;
 }
 
-button {
-    box-shadow: inset 0 -3px transparent;
-    border: none;
-    border-radius: 0;
-}
-
-button:hover {
-    background: inherit;
-    color: @mauve;
-    border-top: 2px solid @mauve;
-}
-
-#workspaces{
-  padding-left: 10px;
-}
 #workspaces button {
-    color: @rosewater;
-    padding: 0 4px;
-}
-
-#workspaces button.focused {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: @rosewater;
-    border-top: 2px solid @rosewater;
+  background-color: @surface0;
+  color: @lavender;
+  border-radius: 1rem;
+  padding: 0.4rem;
 }
 
 #workspaces button.active {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: @mauve;
-    border-top: 2px solid @mauve;
+  background-color: @surface0;
+  color: @sky;
+  border-radius: 1rem;
+}
+
+#workspaces button:hover {
+  background-color: @surface0;
+  color: @sapphire;
+  border-radius: 1rem;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+  background-color: @surface0;
+  color: @red;
+  border-radius: 1rem;
 }
 
-#bluetooth,
-#power-profiles-daemon,
-#pulseaudio,
+window#waybar.empty #window{
+  background: transparent;
+}
+
+#custom-music,
+#tray,
+#backlight,
 #clock,
 #battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#wireplumber,
-#tray,
+#pulseaudio,
+#custom-lock,
+#custom-notification,
 #network,
-#mode,
-#scratchpad {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  margin-left: 4px;
-  margin-right: 4px;
-  padding-left: 4px;
-  padding-right: 4px;
+#window,
+#bluetooth,
+#power-profiles-daemon,
+#custom-notification,
+#custom-power {
+  background-color: @surface0;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
+#power-profiles-daemon {
+  margin-right: 1rem;
+  padding-right: 0;
+  border-radius: 0px 1rem 1rem 0px;
+}
+
+#window {
+  background-color: @surface0;
+  border-radius: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 #clock {
-    color: @maroon;
-    border-bottom: 2px solid @maroon;
-}
-
-#clock.date {
-    color: @mauve;
-    border-bottom: 2px solid @mauve;
-}
-
-#pulseaudio {
-    color: @blue;
-    border-bottom: 2px solid @blue;
-}
-
-#bluetooth {
-    color: @yellow;
-    border-bottom: 2px solid @yellow;
-}
-#power_profiles-daemon {
-    color: @green;
-    border-bottom: 2px solid @green;
-  padding-right: 10px;
-}
-
-#network {
-    color: @yellow;
-    border-bottom: 2px solid @yellow;
-}
-
-#idle_inhibitor {
-    margin-right: 12px;
-    color: #7cb342;
-}
-
-#idle_inhibitor.activated {
-    color: @red;
+  color: @blue;
+  border-radius: 1rem 0px 0px 1rem;
+  padding-right: 1rem;
 }
 
 #battery {
-    color: @green;
-    border-bottom: 2px solid @green;
+  color: @green;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left>widget:first-child>#workspaces {
-    margin-left: 0;
+#battery.charging {
+  color: @green;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right>widget:last-child>#workspaces {
-    margin-right: 0;
+#battery.warning:not(.charging) {
+  color: @peach;
 }
 
-#custom-vpn {
-    color: @lavender;
-    border-radius: 15px;
-    padding-left: 6px;
-    padding-right: 6px;
+#battery.critical:not(.charging) {
+  color: @red;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#backlight,
+#battery {
+  border-radius: 0;
+}
+
+#pulseaudio {
+  color: @maroon;
+  border-radius: 0px;
+}
+
+#custom-music {
+  color: @mauve;
+  border-radius: 1rem;
+}
+
+#custom-lock {
+  border-radius: 1rem 0px 0px 1rem;
+  color: @lavender;
+}
+
+#custom-power {
+  padding-right: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 0px 1rem 1rem 0px;
+  color: @red;
+}
+
+#tray {
+  background-color: blue;
+  margin-right: 1rem;
+  border-radius: 1rem;
+}
+
+#custom-notification {
+  color: @green;
+  border-radius: 0px;
+}
+
+#bluetooth {
+  color: @flamingo;
+  border-radius: 0px;
+}
+
+#network {
+  color: @mauve;
+  border-radius: 1rem 0px 0px 1rem;
+  margin-right: 0px;
+  padding-right: 1rem;
 }
