@@ -88,7 +88,7 @@ alias f='fuck'
 alias update="yay -Syu --noconfirm && yay -Scc --noconfirm"
 alias gh="exec ssh-agent zsh && ssh-add -k ~/.shh/github"
 alias cat="bat"
-alias tree="eza --tree"
+alias tree="eza --tree --icons=always"
 alias lazy="lazygit"
 alias jl="jupyter lab"
 alias kee="cat ~/KeePassXC/.config | wl-copy -n && sleep 5s && wl-copy -c && c"
@@ -99,7 +99,7 @@ alias z="zathura"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ls="eza --color=always --long --git --no-filesize --sort=type --icons=always --no-time --no-user --no-permissions"
 
 # thefuck alias
 eval $(thefuck --alias)
