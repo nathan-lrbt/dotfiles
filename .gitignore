@@ -8,3 +8,11 @@
 .config/evolution/sources
 .config/dconf
 .config/gtk-3.0/bookmarks
+.config/.mozilla/zen/Crash Reports
+.config/GIMP/3.0
+.config/go/telemetry/local
+.config/libreoffice/4
+.config/obsidian
+.config/tidal-hifi
+.config/mimeapps.list
+.config/mimeapps.list

@@ -34,26 +34,17 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      lspconfig.lua_ls.setup({ capabilities = capabilities })
-      lspconfig.biome.setup({ capabilities = capabilities })
-      lspconfig.ts_ls.setup({ capabilities = capabilities })
-      lspconfig.pyright.setup({ capabilities = capabilities })
-      lspconfig.bashls.setup({ capabilities = capabilities })
-      lspconfig.sqlls.setup({ capabilities = capabilities })
-      lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-      lspconfig.ltex.setup({
-        filetypes = { "latex", "tex", "bib", "markdown", "gitcommit", "text" },
-      })
-      lspconfig.html.setup({ capabilities = capabilities })
-      lspconfig.templ.setup({ capabilities = capabilities })
-      lspconfig.dockerls.setup({ capabilities = capabilities })
-      lspconfig.cssls.setup({ capabilities = capabilities })
-      lspconfig.clangd.setup({ capabilities = capabilities })
-      lspconfig.gopls.setup({
-        capabilities = capabilities,
+      local servers = { "lua_ls", "biome", "ts_ls", "pyright", "bashls", "sqlls", "rust_analyzer", "ltex", "html", "templ", "dockerls", "cssls", "clangd", "gopls"}
+      for _, srv in ipairs(servers) do
+        vim.lsp.config(srv, {
+          capabilities = capabilities,
+        })
+      end
+
+      vim.lsp.enable(servers)
+      vim.lsp.config("gopls", {
         filetypes = { "json", "jsonc" },
       })
 
