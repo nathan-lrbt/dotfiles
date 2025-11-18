@@ -6,6 +6,9 @@
 #   export GPG_TTY="$TTY"
 # fi
 
+# remove env prefix in prompt
+export CONDA_CHANGEPS1=false
+
 PATH="$HOME/.go/bin:$PATH"
 PATH="$HOME/go/bin:$PATH"
 
@@ -90,7 +93,7 @@ alias gh="exec ssh-agent zsh && ssh-add -k ~/.shh/github"
 alias cat="bat"
 alias tree="eza --tree --icons=always"
 alias lazy="lazygit"
-alias jl="jupyter lab"
+alias jl="jupyter-lab --no-browser > /dev/null 2>&1 & disown && sleep 1 && jupyter server list | grep token | sed 's/ ::.*//' | wl-copy && printf 'link : ' && wl-paste"
 alias kee="cat ~/KeePassXC/.config | wl-copy -n && sleep 5s && wl-copy -c && c"
 alias z="zathura"
 
