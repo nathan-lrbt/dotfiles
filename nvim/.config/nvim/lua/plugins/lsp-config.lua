@@ -57,6 +57,7 @@ return {
 				"cssls",
 				"clangd",
 				"gopls",
+				"jdtls",
 			}
 			for _, srv in ipairs(servers) do
 				vim.lsp.config(srv, {
@@ -65,6 +66,16 @@ return {
 			end
 
 			vim.lsp.enable(servers)
+			vim.lsp.config("ltex", {
+				cmd_env = {
+					JAVA_TOOL_OPTIONS = "-Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.entityExpansionLimit=0",
+				},
+				settings = {
+					ltex = {
+						language = "fr-FR",
+					},
+				},
+			})
 			vim.lsp.config("gopls", {
 				filetypes = { "json", "jsonc" },
 			})
