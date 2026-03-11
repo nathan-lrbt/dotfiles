@@ -99,9 +99,6 @@ alias z="zathura"
 alias open="xdg-open"
 
 
-# Shell integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
 
 alias ls="eza --color=always --long --git --no-filesize --sort=type --icons=always --no-time --no-user --no-permissions"
 
@@ -121,3 +118,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
