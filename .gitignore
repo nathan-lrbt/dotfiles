@@ -1,3 +1,7 @@
 .config/fish/fish_variables
 .config/waybar.old
 /tmux/.config/tmux/plugins/vim-tmux-navigator
+/nvim/.config/nvim/lazy-lock.json.orig
+/nvim/.config/nvim/lua/plugins/live-server.lua.orig
+/tmux/.config/tmux/plugins/catppuccin
+/zsh/.zshrc.orig

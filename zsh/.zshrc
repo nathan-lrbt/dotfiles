@@ -15,6 +15,13 @@ PATH="$HOME/go/bin:$PATH"
 
 export EDITOR=nvim
 
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+
 # # SSH_AUTH_SOCK set to GPG to enable using gpgagent as the ssh agent.
 # export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 # gpgconf --launch gpg-agent
@@ -119,10 +126,30 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/home/nathan/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/nathan/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/nathan/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/nathan/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# <<< conda initialize <<<
+conda() {
+  unfunction conda
+  __conda_setup="$('/home/nathan/miniconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+  [ $? -eq 0 ] && eval "$__conda_setup"
+  conda "$@"
+}
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

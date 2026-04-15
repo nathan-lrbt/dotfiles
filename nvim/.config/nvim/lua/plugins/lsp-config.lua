@@ -26,6 +26,8 @@ return {
 					"clangd",
 					"gopls",
 					"biome",
+          "jdtls",
+          "jsonls",
 				},
 			})
 		end,
@@ -58,6 +60,7 @@ return {
 				"clangd",
 				"gopls",
 				"jdtls",
+        "jsonls",
 			}
 			for _, srv in ipairs(servers) do
 				vim.lsp.config(srv, {
@@ -76,7 +79,7 @@ return {
 					},
 				},
 			})
-			vim.lsp.config("gopls", {
+			vim.lsp.config("jsonls", {
 				filetypes = { "json", "jsonc" },
 			})
 
