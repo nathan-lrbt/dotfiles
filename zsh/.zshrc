@@ -8,6 +8,7 @@
 
 # remove env prefix in prompt
 export CONDA_CHANGEPS1=false
+export PATH="$HOME/.local/bin:$PATH"
 
 PATH="$HOME/.go/bin:$PATH"
 PATH="$HOME/go/bin:$PATH"
@@ -121,3 +122,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
