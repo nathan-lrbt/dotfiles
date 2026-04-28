@@ -1,19 +1,31 @@
-# Set the GPG_TTY to be the same as the TTY, either via the env var
-# or via the tty command.
-# if [ -n "$TTY" ]; then
-#   export GPG_TTY=$(tty)
-# else
-#   export GPG_TTY="$TTY"
-# fi
+# support colors in less pages
+set -a
+MANROFFOPT='-c'
+LESS_TERMCAP_mb=$'\e[1;31m'
+LESS_TERMCAP_md=$'\e[1;31m'
+LESS_TERMCAP_me=$'\e[0m'
+LESS_TERMCAP_se=$'\e[0m'
+LESS_TERMCAP_so=$'\e[1;33;44m'
+LESS_TERMCAP_ue=$'\e[0m'
+LESS_TERMCAP_us=$'\e[4;1;32m'
+LESS_TERMCAP_mr=$'\e[7m'
+LESS_TERMCAP_mh=$'\e[2m'
+LESS_TERMCAP_ZN=$'\e[74m'
+LESS_TERMCAP_ZV=$'\e[75m'
+LESS_TERMCAP_ZO=$'\e[73m'
+LESS_TERMCAP_ZW=$'\e[75m'
+MANPAGER='less'
 
 # remove env prefix in prompt
-export CONDA_CHANGEPS1=false
-export PATH="$HOME/.local/bin:$PATH"
+CONDA_CHANGEPS1=false
+PATH="$HOME/.local/bin:$PATH"
 
 PATH="$HOME/.go/bin:$PATH"
 PATH="$HOME/go/bin:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
 
-export EDITOR=nvim
+EDITOR=nvim
+set +a
 
 autoload -Uz compinit
 if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
@@ -22,7 +34,7 @@ else
   compinit -C
 fi
 
-# # SSH_AUTH_SOCK set to GPG to enable using gpgagent as the ssh agent.
+# SSH_AUTH_SOCK set to GPG to enable using gpgagent as the ssh agent.
 # export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 # gpgconf --launch gpg-agent
 
@@ -105,10 +117,26 @@ alias jl="jupyter-lab --no-browser > /dev/null 2>&1 & disown && sleep 1 && jupyt
 alias kee="cat ~/KeePassXC/.config | wl-copy -n && sleep 5s && wl-copy -c && c"
 alias z="zathura"
 alias open="xdg-open"
+alias tsu="tailscale up"
+alias tsd="tailscale down"
+alias tss="tailscale status"
 
+# Toggle Tailscale connection
+tailscale-toggle() {
+  if tailscale status &>/dev/null; then
+    echo "Tailscale is up — bringing it down..."
+    sudo tailscale down
+  else
+    echo "Tailscale is down — bringing it up..."
+    sudo tailscale up
+  fi
+}
+alias tst='tailscale-toggle'
+alias nosleep="systemd-inhibit --what=sleep:idle:handle-lid-switch --who='Nathan' --why='long process' sleep infinity &"
 
 
 alias ls="eza --color=always --long --git --no-filesize --sort=type --icons=always --no-time --no-user --no-permissions"
+
 
 # thefuck alias
 eval $(thefuck --alias)
@@ -154,3 +182,6 @@ conda() {
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# opencode
+export PATH=/home/nathan/.opencode/bin:$PATH

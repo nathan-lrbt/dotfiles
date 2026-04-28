@@ -5,3 +5,5 @@
 /nvim/.config/nvim/lua/plugins/live-server.lua.orig
 /tmux/.config/tmux/plugins/catppuccin
 /zsh/.zshrc.orig
+/hyprland/.config/hypr/configs/monitors.conf
+/hyprlock/.config/hypr/hyprlock.conf

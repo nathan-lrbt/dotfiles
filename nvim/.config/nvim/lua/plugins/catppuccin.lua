@@ -5,9 +5,9 @@ return {
   priority = 1000,
   dependencies = { "nvim-lualine/lualine.nvim" },
   config = function()
-    vim.cmd.colorscheme("catppuccin")
+    vim.cmd.colorscheme("catppuccin-mocha")
     require('lualine').setup({
-      options = { theme = "catppuccin" }
+      options = { theme = "catppuccin-mocha" }
     })
   end,
 }

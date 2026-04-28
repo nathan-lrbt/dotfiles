@@ -26,8 +26,8 @@ return {
 					"clangd",
 					"gopls",
 					"biome",
-          "jdtls",
-          "jsonls",
+					"jdtls",
+					"jsonls",
 				},
 			})
 		end,
@@ -38,11 +38,9 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			-- Add this after the capabilities line and before the servers loop
-			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-				border = "rounded",
-				max_width = 80,
-				wrap = true,
-			})
+			vim.keymap.set("n", "K", function()
+				vim.lsp.buf.hover({ border = "rounded", max_width = 80 })
+			end, {})
 
 			local servers = {
 				"lua_ls",
@@ -60,7 +58,7 @@ return {
 				"clangd",
 				"gopls",
 				"jdtls",
-        "jsonls",
+				"jsonls",
 			}
 			for _, srv in ipairs(servers) do
 				vim.lsp.config(srv, {
